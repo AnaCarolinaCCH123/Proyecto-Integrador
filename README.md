@@ -1,2 +1,5 @@
 # Proyecto-Integrador
-En la industria automotriz, existe una amplia varidad de marcas y autos. Actualmente a nivel mundial existen alrededor de 155 marcas de automóviles. 
+
+En la industria automotriz, existe una amplia varidad de marcas y autos. Actualmente a nivel mundial existen alrededor de 155 marcas de automóviles que ofrecen una amplia varidad de autos. Las marcas fabircadoras, suelen contar con diferntes grupos automovilísticos, que suelen clasificarse porque tan lujoso son los autos que ofrecen. Por ejemplo, la marca fabricante Honda es un fabricante Japonés que cuenta con dos grupos automovilísticos. El primero es Honda que cuenta con autos de uso más común tales como el CR-V, City, Civic, Accord, entre otros. Por otro lado, el grupo Acura, cuenta con autos de alta gama, como el TLX,Integra, RDX, MDX, entre otros. 
+
+Cada día vemos docenas de autos diferentes por la calle y es dificil conocer su origen. Es por esto que el programa ofrece el usuario ayuda para conocer la marca fabricante, grupo automovólistico, y los diferentes autos que conforman cada grupo. Sin emabargo, se centrará en las marcas presentes en México como Ford, General Motors, Grupo Stellantis, Hyundai, Toyota y Volkswagen. 
