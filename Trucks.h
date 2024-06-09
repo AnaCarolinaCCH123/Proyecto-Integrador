@@ -1,15 +1,15 @@
-#ifndef TRUCKS_H
-#define TRUCKS_H
+#ifndef TRUCK_H
+#define TRUCK_H
 
 #include "Vehicle.h"
 
-class Trucks : public Vehicle {
+class Truck : public Vehicle {
 
 private:
     int Wheels;
 
 public:
-Trucks(int year, string manufacturer, int speed , int Wheels, string name); 
+Truck(int year, string manufacturer, int speed , int Wheels, string name); 
 int getWheels();
 void setWheels(int);
 string VehicleInfo() override;  
