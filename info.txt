@@ -1,0 +1,20 @@
+This program was created for people who have some interest  in vehicles or just want to learn something new. This program aims to collect some relevant information about vehicles such as cars, vans, motorcycles, buses and trucks so that you don't have to search for the information from different websites. Below is a list of vehicles that may be of interest to you: 
+1) Model S
+2) Camry
+3) Civic
+4) Volvo Bus
+5) Merce
+6) BMW Bus
+7) Sportster
+8) Fascino
+9) MT15
+10) F-150
+11) Silverado
+12) Tundra
+13) Actros
+14) Super Duty
+15) Silver
+
+For the moment we are still collecting information from different vehicles, so not all names are present. 
+
+Besides there is an extra function to know which vehicle is faster, accoriding to the number of the list enter a the number corresponding to the vehicles to be compared.
