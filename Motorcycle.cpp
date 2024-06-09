@@ -1,25 +1,25 @@
-#include "Motos.h"
+#include "Motorcycle.h"
 #include <iostream>
 
-Motos::Motos(int year, string manufacturer, int speed, bool Sport, string name)
+Motorcycle::Motorcycle(int year, string manufacturer, int speed, bool Sport, string name)
     : Vehicle (manufacturer, speed, year, name) {
     this->Sport = Sport;
 }
 
-int Motos::getSport() {
+int Motorcycle::getSport() {
     return Sport;
 }
 
 
-void Motos::setSport(bool Sport) {
+void Motorcycle::setSport(bool Sport) {
     this->Sport = Sport;
 }
 
-string Motos:: VehicleInfo (string ExtraInfo) {
+string Motorcycle:: VehicleInfo (string ExtraInfo) {
     return VehicleInfo() + " " + ExtraInfo + "Is a sport motorcycle: " + to_string(Sport);
 }
 
-string Motos::VehicleInfo()
+string Motorcycle::VehicleInfo()
 {
 return "Did you know that the world's most expensive motorcycle costs $360,000"; 
 }
