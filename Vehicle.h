@@ -19,6 +19,7 @@ public:
     string getManufacturer();
     string getName();
     virtual string VehicleInfo() = 0;
+friend bool operator>=(Vehicle &v1, Vehicle &v2);
 };
 
 #endif
