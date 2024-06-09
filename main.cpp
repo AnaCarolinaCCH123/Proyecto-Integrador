@@ -1,119 +1,107 @@
+#include <iostream>
 #include <vector>
+#include <fstream>
 #include "Car.h"
 #include "Bus.h"
-#include "Motos.h"
+#include "Motorcycle.h"
 #include "Pickups.h"
-#include "Trucks.h"
+#include "Truck.h"
 
 using namespace std;
 
 int main() {
-    // Access to Car objects
-    vector<Car*> cars;
 
-    cars.push_back(new Car(2022, "Tesla", 150, 500, "Model S"));
-    cars.push_back(new Car(2021, "Honda", 120, 400, "Camry"));
-    cars.push_back(new Car(2020, "Toyota", 100, 300, "Civic"));
-
-    // Access to Bus Objects 
-    vector<Bus*> buses;
-    buses.push_back(new Bus(2022, "Volvo", 150, 20, "Volvo Bus"));
-    buses.push_back(new Bus(2021, "Mercedes", 120, 15, "Merce"));
-    buses.push_back(new Bus(2020, "BMW", 100, 22, "BMW Bus")); 
+    //Read a .TXT file 
     
+    ifstream infoFile("info.txt");
+    if (infoFile.is_open()) {
+        string line;
+        while (getline(infoFile, line)) {
+            cout << line << endl;
+        }}
 
-    // Access to Motos Objects
-    vector<Motos*> motos;
-    motos.push_back(new Motos(2023, "Harley-Davidson", 180, true, "Sportster"));
-    motos.push_back(new Motos(2022, "Yamaha", 160, false, "Fascino"));
-    motos.push_back(new Motos(2021, "Yamaha", 140, true, "MT15")); 
+    
+    // Access to all Vehicle objects
 
-    // Access to Pickups Objects
-    vector<Pickups*> pickups;
-    pickups.push_back(new Pickups(2024, "Ford", 120, 1500, "F-150"));
-    pickups.push_back(new Pickups(2023, "Chevrolet", 110, 1400, "Silverado")); 
-    pickups.push_back(new Pickups(2022, "Toyota", 100, 1300, "Tundra"));
+    vector<Vehicle*> vehicles;
 
-    // Access to Trucks Objects
-    vector<Trucks*> trucks;
-    trucks.push_back(new Trucks(2025, "Mercedes-Benz", 100, 18, "Actros"));
-    trucks.push_back(new Trucks(2024, "Ford", 90, 17, "Super Dty")); 
-    trucks.push_back(new Trucks(2023, "Chevrolet", 80, 5 , "Silverado"));
-        
+    vehicles.push_back(new Car(2022, "Tesla", 150, 500, "Model S"));
+    vehicles.push_back(new Car(2021, "Honda", 120, 400, "Camry"));
+    vehicles.push_back(new Car(2020, "Toyota", 100, 300, "Civic"));
 
-    // Search for a car by name
+    vehicles.push_back(new Bus(2022, "Volvo", 150, 20, "Volvo Bus"));
+    vehicles.push_back(new Bus(2021, "Mercedes", 120, 15, "Merce"));
+    vehicles.push_back(new Bus(2020, "BMW", 100, 22, "BMW Bus"));
+
+    vehicles.push_back(new Motorcycle(2023, "Harley-Davidson", 180, true, "Sportster"));
+    vehicles.push_back(new Motorcycle(2022, "Yamaha", 160, false, "Fascino"));
+    vehicles.push_back(new Motorcycle(2021, "Yamaha", 140, true, "MT15"));
+
+    vehicles.push_back(new Pickups(2024, "Ford", 120, 1500, "F-150"));
+    vehicles.push_back(new Pickups(2023, "Chevrolet", 110, 1400, "Silverado"));
+    vehicles.push_back(new Pickups(2022, "Toyota", 100, 1300, "Tundra"));
+
+    vehicles.push_back(new Truck(2025, "Mercedes-Benz", 100, 18, "Actros"));
+    vehicles.push_back(new Truck(2024, "Ford", 90, 17, "Super Duty"));
+    vehicles.push_back(new Truck(2023, "Chevrolet", 80, 5, "Silver"));
+
     string searchName;
     cout << "Enter the name of the vehicle you want to search: ";
     getline(cin, searchName);
 
     bool found = false;
-    // Search in Cars
-    for (Car* car : cars) {
-        if (car->getName() == searchName ) {
-            cout << "Year: " << car->getYear() << endl;
-            cout << "Manufacturer: " << car->getManufacturer() << endl;
-            cout << "Speed: " << car->getSpeed() << endl;
-            cout << car->VehicleInfo(" This is a type of car.") << endl;
+    
+    for (Vehicle* vehicle : vehicles) {
+        if (vehicle->getName() == searchName) {
+            cout << "Year: " << vehicle->getYear() << endl;
+            cout << "Manufacturer: " << vehicle->getManufacturer() << endl;
+            cout << "Speed: " << vehicle->getSpeed() << endl;
+            if (Car* car = dynamic_cast<Car*>(vehicle)) {
+                cout << car->VehicleInfo(" This is a type of car.") << endl;
+            } else if (Bus* bus = dynamic_cast<Bus*>(vehicle)) {
+                cout << bus->VehicleInfo(" This is a type of bus.") << endl;
+            } else if (Motorcycle* moto = dynamic_cast<Motorcycle*>(vehicle)) {
+                cout << moto->VehicleInfo(" This is a type of motorcycle.") << endl;
+            } else if (Pickups* pickup = dynamic_cast<Pickups*>(vehicle)) {
+                cout << pickup->VehicleInfo(" This is a type of a pickup truck.") << endl;
+            } else if (Truck* truck = dynamic_cast<Truck*>(vehicle)) {
+                cout << truck->VehicleInfo(" This is a type of a truck.") << endl;
+            }
             found = true;
             break;
         }
     }
-    // Search in Buses
-    if (!found) {
-        for (Bus* bus : buses) {
-            if (bus->getName() == searchName) {
-                cout << "Year: " << bus->getYear() << endl;
-                cout << "Manufacturer: " << bus->getManufacturer() << endl;
-                cout << "Speed: " << bus->getSpeed() << endl;
-                cout << bus->VehicleInfo(" This is a type ofbus.") << endl;
-                found = true;
-                break;
-            }
-        }
-    }
-    // Search in Motos
-    if (!found) {
-        for (Motos* moto : motos) {
-            if (moto->getName() == searchName) {
-                cout << "Year: " << moto->getYear() << endl;
-                cout << "Manufacturer: " << moto->getManufacturer() << endl;
-                cout << "Speed: " << moto->getSpeed() << endl;
-                cout << moto->VehicleInfo(" This is a type of motorcycle.") << endl;
-                found = true;
-                break;
-            }
-        }
-    }
-    // Search in Pickups
-    if (!found) {
-        for (Pickups* pickup : pickups) {
-            if (pickup->getName() == searchName) {
-                cout << "Year: " << pickup->getYear() << endl;
-                cout << "Manufacturer: " << pickup->getManufacturer() << endl;
-                cout << "Speed: " << pickup->getSpeed() << endl;
-                cout << pickup->VehicleInfo(" This is a type of a pickup truck.") << endl;
-                found = true;
-                break;
-            }
-        }
-    }
-    // Search in Trucks
-    if (!found) {
-        for (Trucks* truck : trucks) {
-            if (truck->getName() == searchName) {
-                cout << "Year: " << truck->getYear() << endl;
-                cout << "Manufacturer: " << truck->getManufacturer() << endl;
-                cout << "Speed: " << truck->getSpeed() << endl;
-                cout << truck->VehicleInfo(" This is a type of a truck.") << endl;
-                found = true;
-                break;}
-                                    }
-                }
-    //If the name doesn´t match any of the vehicles, it will print the following message
+
+    // If the name doesn't exist
     if (!found) {
         cout << "Vehicle with name '" << searchName << "' not found." << endl;
     }
 
-    return 0;
+
+    //Operator load
+     cout << "Enter the number of the first vehicle you want to compare: ";
+     string input1;
+     getline(cin, input1);
+     int index1 = stoi(input1);
+
+     cout << "Enter the number of the second vehicle you want to compare: ";
+     string input2;
+     getline(cin, input2);
+     int index2 = stoi(input2);
+
+       
+if (index1 >= 0 && index1 < vehicles.size() && index2 >= 0 && index2 < vehicles.size()) {
+        
+    if (*vehicles[index1] >= *vehicles[index2]) {
+               cout << vehicles[index1]->getName() << " is faster than or equal to " << vehicles[index2]->getName() << endl;
+          
+    } else { cout << vehicles[index1]->getName() << " is slower than " << vehicles[index2]->getName() << endl;
+           }
+    
+    } else {
+           cout << "Invalid vehicle indices" << endl;
+       }
+
+        return 0;
     }
 
