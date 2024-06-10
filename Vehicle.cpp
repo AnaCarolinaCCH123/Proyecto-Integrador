@@ -22,3 +22,6 @@ string Vehicle::getManufacturer() {
 string Vehicle::getName() {
     return name;
 }
+bool operator>=(Vehicle &v1, Vehicle &v2) {
+    return v1.speed >= v2.speed;
+}
